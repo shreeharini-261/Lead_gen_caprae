@@ -1,0 +1,31 @@
+<!-- templates/client_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leads.css') }}">
+</head>
+<body>
+    <h2>Client Dashboard</h2>
+
+    <div class="subscription-info">
+        <p>Package: {{ subscription_name }}</p>
+        <p>Leads used: {{ leads_used }} of {{ lead_limit }}</p>
+        <div class="progress-bar" style="width: {{ percentage }}% "></div>
+    </div>
+
+    <div class="lead-stats">
+        <div class="stat-card">Total Leads: {{ total_leads }}</div>
+        <div class="stat-card">High-Scoring Leads: {{ high_scoring_leads }}</div>
+    </div>
+
+    <div class="lead-list">
+        <h3>Your Leads</h3>
+        <ul>
+        {% for lead in leads %}
+            <li>{{ lead.name }} - {{ lead.email }} - Tags: {{ lead.tags }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
